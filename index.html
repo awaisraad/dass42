@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eventsApp">
+<head>
+    <meta charset="UTF-8">
+    <title>DASS 42 Test</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" href="components/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="components/css/font-awesome.css" type="text/css">
+    <style>
+        .btn.btn-default{
+            margin-left: 5px;
+            outline: none;
+        }
+        .btn.btn-default,
+        .btn:active,
+        .btn:focus {
+            background-color: inherit;
+        }
+        #hideMe{
+            margin-top: 10%;
+        }
+        blockquote{
+            min-height: 100px;
+        }
+    </style>
+    <script>
+        var answerCount = 1;
+        var current = 3;
+        function updateProgressBar(){
+            if(answerCount == 42){
+                document.getElementById("progressbar").className = "progress-bar progress-bar-success";
+            }
+            else {
+                answerCount++;
+                current += (1/42*100);
+                document.getElementById("progressbar").style.width = (current)+'%';
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="navbar navbar-default">
+    <div class="navbar-inner">
+        <ul class="nav navbar-brand">
+            <a href="#">DASS 42</a>
+        </ul>
+    </div>
+</div>
+
+<div class="container" ng-controller="DassQuestionsControllers" ng-cloak>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3" id="hideMe">
+            <div class="progress">
+                <div class="progress-bar progress-bar-primary"
+                     id="progressbar"
+                     style="width: 0.5%" role="progressbar">
+                </div>
+            </div>
+
+            <blockquote>
+                <p class="text-center" ng-init="setQuestion()">{{selectedQuestion}}</p>
+                <footer class="text-center">{{count}}</footer>
+            </blockquote>
+            <hr/>
+            <!--<h2 class="text-center thumbnail" ng-init="setQuestion()">{{selectedQuestion}}</h2><br/>-->
+            <p class="text-center" style="margin-top: 10px;">
+                <button class="btn btn-default" onclick="updateProgressBar()" ng-click="nextQuestion(0);">0</button>
+                <button class="btn btn-default" onclick="updateProgressBar()" ng-click="nextQuestion(1)">1</button>
+                <button class="btn btn-default" onclick="updateProgressBar()" ng-click="nextQuestion(2)">2</button>
+                <button class="btn btn-default" onclick="updateProgressBar()" ng-click="nextQuestion(3)">3</button>
+            </p>
+            <hr/>
+        </div>
+    </div>
+
+    <div class="row" id="result">
+        <h1 class="text-center text-success">Result</h1>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Depression</th>
+                        <th class="text-center">Anxiety</th>
+                        <th class="text-center">Stress</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="active ">
+                        <td class="text-center">{{depression()}}</td>
+                        <td class="text-center">{{anxiety()}}</td>
+                        <td class="text-center">{{stress()}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <br/>
+                <p class="text-center">
+                    <button class="btn btn-toolbar btn-lg" onclick="window.location.reload()">Retake</button>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="components/angular.min.js"></script>
+<script src="modules/app.js"></script>
+<script src="controllers/DassController.js"></script>
+<script src="services/DassData.js"></script>
+
+</body>
+</html>
