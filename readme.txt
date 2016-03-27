@@ -18,3 +18,5 @@ The rating scale is as follows:
 3 Applied to me very much, or most of the time.
 
 ===================================================
+
+Visit: http://awaisraad.github.io/dass42/ to take the test!
