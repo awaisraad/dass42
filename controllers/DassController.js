@@ -34,7 +34,7 @@ app.controller('DassQuestionsControllers', function($scope, DassQuestions, $log)
         if($scope.shouldCalculate){
             sum = $scope.getSum(list);
             console.log("depression: " + sum);
-        }
+        } else{ return; }
 
         if(sum>=0 && sum<=9){
             return "NORMAL";
@@ -62,7 +62,7 @@ app.controller('DassQuestionsControllers', function($scope, DassQuestions, $log)
         if($scope.shouldCalculate){
             sum = $scope.getSum(list);
             console.log("anxiety: " + sum);
-        }
+        }else{ return; }
 
         if(sum>=0 && sum<=7){
             return "NORMAL";
@@ -89,7 +89,7 @@ app.controller('DassQuestionsControllers', function($scope, DassQuestions, $log)
         if($scope.shouldCalculate){
             sum = $scope.getSum(list);
             console.log("stress: " + sum);
-        }
+        }else{ return; }
 
         if(sum>=0 && sum<=14){
             return "NORMAL";
