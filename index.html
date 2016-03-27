@@ -29,6 +29,7 @@
         function updateProgressBar(){
             if(answerCount == 42){
                 document.getElementById("progressbar").className = "progress-bar progress-bar-success";
+                document.getElementById("result").hidden = false;
             }
             else {
                 answerCount++;
@@ -73,7 +74,7 @@
         </div>
     </div>
 
-    <div class="row" id="result">
+    <div class="row" id="result" hidden="hidden">
         <h1 class="text-center text-success">Result</h1>
         <div class="col-md-6 col-md-offset-3">
             <div class="table-responsive">
@@ -95,14 +96,12 @@
                 </table>
 
                 <br/>
-                <p class="text-center">
-                    <button class="btn btn-toolbar btn-lg" onclick="window.location.reload()">Retake</button>
-                </p>
-
             </div>
         </div>
-
     </div>
+    <p class="text-center">
+        <button class="btn btn-toolbar btn-lg" onclick="window.location.reload()">Retake</button>
+    </p>
 </div>
 
 
