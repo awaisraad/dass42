@@ -27,7 +27,7 @@ app.controller('DassQuestionsControllers', function($scope, DassQuestions, $log)
     };
 
     $scope.depression = function(){
-        /* 3 5 10 13 16 17 21 24 26 31 34 37 38 42 42*/
+        /* 3 5 10 13 16 17 21 24 26 31 34 37 38 42 42 */
         var list = [3,5,10,13,16,17,21,24,26,31,34,37,38,42,42];
 
         var sum = 0;
