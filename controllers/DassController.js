@@ -110,17 +110,9 @@ app.controller('DassQuestionsControllers', function($scope, DassQuestions, $log)
 
     $scope.getSum = function(list){
         var sum = 0;
-        var sum1 = 0;
         list.forEach(function(val){
-            sum1 += $scope.ratings[ val-1 ];
+            sum += $scope.ratings[ val-1 ];
         });
-
-
-        for(var i = 0; i < list.length; i++){
-            sum += $scope.ratings[ list[i]-1 ];
-        }
-
-        console.log("Outer sum: " + sum + " : " + sum1);
         return sum;
     }
 
