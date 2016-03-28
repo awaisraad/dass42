@@ -1,11 +1,12 @@
 'use strict';
 
-app.controller('DassQuestionsControllers', function($scope, DassQuestions, $log){
+app.controller('DassQuestionsControllers', function($scope, DassQuestions){
 
     $scope.count = 1;
     $scope.ratings = [];
     $scope.shouldCalculate = false;
     $scope.questions = DassQuestions.questions;
+
     $scope.setQuestion = function(id){
         if(id == null || id < 0){
             id = 1;
@@ -16,7 +17,6 @@ app.controller('DassQuestionsControllers', function($scope, DassQuestions, $log)
             $scope.count = 'DONE';
         }
         $scope.selectedQuestion = $scope.questions[id].question;
-
     };
 
     $scope.nextQuestion = function(answer){
@@ -37,19 +37,19 @@ app.controller('DassQuestionsControllers', function($scope, DassQuestions, $log)
         }
 
         if(sum>=0 && sum<=9){
-            return "NORMAL";
+            return $scope.getResponse(0);
         }
         else if(sum>=10 && sum<=13){
-            return "MILD";
+            return $scope.getResponse(1);
         }
         else if(sum>=14 && sum<=20){
-            return "MODERATE";
+            return $scope.getResponse(2);
         }
         else if(sum>=21 && sum<=27){
-            return "SEVERE";
+            return $scope.getResponse(3);
         }
         else if(sum>=28){
-            return "EXTREMELY SEVERE";
+            return $scope.getResponse(4);
         }
     };
 
@@ -65,19 +65,19 @@ app.controller('DassQuestionsControllers', function($scope, DassQuestions, $log)
         }
 
         if(sum>=0 && sum<=7){
-            return "NORMAL";
+            return $scope.getResponse(0);
         }
         else if(sum>=8 && sum<=9){
-            return "MILD";
+            return $scope.getResponse(1);
         }
         else if(sum>=10 && sum<=14){
-            return "MODERATE";
+            return $scope.getResponse(2);
         }
         else if(sum>=15 && sum<=19){
-            return "SEVERE";
+            return $scope.getResponse(3);
         }
         else if(sum>=20){
-            return "EXTREMELY SEVERE";
+            return $scope.getResponse(4);
         }
     };
 
@@ -92,19 +92,19 @@ app.controller('DassQuestionsControllers', function($scope, DassQuestions, $log)
         }
 
         if(sum>=0 && sum<=14){
-            return "NORMAL";
+            return $scope.getResponse(0);
         }
         else if(sum>=15 && sum<=18){
-            return "MILD";
+            return $scope.getResponse(1);
         }
         else if(sum>=19 && sum<=25){
-            return "MODERATE";
+            return $scope.getResponse(2);
         }
         else if(sum>=26 && sum<=33){
-            return "SEVERE";
+            return $scope.getResponse(3);
         }
         else if(sum>=34){
-            return "EXTREMELY SEVERE";
+            return $scope.getResponse(4);
         }
     };
 
@@ -115,5 +115,21 @@ app.controller('DassQuestionsControllers', function($scope, DassQuestions, $log)
         });
         return sum;
     }
+
+    $scope.getResponse = function(id){
+        var responses =
+            [
+                '<p class="text-success"><strong>NORMAL</strong></p>',
+                '<p class="text-info"><strong>MILD</strong></p>',
+                '<p class="text-primary"><strong>MODERATE</strong></p>',
+                '<p class="text-warning"><strong>SEVERE</strong></p>',
+                '<p class="text-danger"><strong>EXTREMELY SEVERE</strong></p>'
+            ];
+
+        if(id>=0 && id<responses.length){
+            return responses[id];
+        }
+        return responses[0];
+    };
 
 });

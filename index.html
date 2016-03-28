@@ -20,12 +20,12 @@
             margin-top: 10%;
         }
         blockquote{
-            min-height: 100px;
+            min-height: 125px;
         }
     </style>
     <script>
         var answerCount = 1;
-        var current = 3;
+        var currentProgress = 3;
         function updateProgressBar(){
             if(answerCount == 42){
                 document.getElementById("progressbar").className = "progress-bar progress-bar-success";
@@ -33,8 +33,8 @@
             }
             else {
                 answerCount++;
-                current += (1/42*100);
-                document.getElementById("progressbar").style.width = (current)+'%';
+                currentProgress += (1/42*100);
+                document.getElementById("progressbar").style.width = (currentProgress)+'%';
             }
         }
     </script>
@@ -87,10 +87,10 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="active ">
-                        <td class="text-center">{{depression()}}</td>
-                        <td class="text-center">{{anxiety()}}</td>
-                        <td class="text-center">{{stress()}}</td>
+                    <tr class="active">
+                        <td class="text-center" ng-bind-html="depression()"></td>
+                        <td class="text-center" ng-bind-html="anxiety()"></td>
+                        <td class="text-center" ng-bind-html="stress()"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -102,10 +102,12 @@
     <p class="text-center">
         <button class="btn btn-toolbar btn-lg" onclick="window.location.reload()">Retake</button>
     </p>
+
 </div>
 
 
 <script src="components/angular.min.js"></script>
+<script src="components/angular-sanitize.js"></script>
 <script src="modules/app.js"></script>
 <script src="controllers/DassController.js"></script>
 <script src="services/DassData.js"></script>
