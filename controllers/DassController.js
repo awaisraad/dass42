@@ -114,7 +114,7 @@ app.controller('DassQuestionsControllers', function($scope, DassQuestions){
             sum += $scope.ratings[ val-1 ];
         });
         return sum;
-    }
+    };
 
     $scope.getResponse = function(id){
         var responses =
