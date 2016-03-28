@@ -52,6 +52,7 @@
             var req = getXmlHttpRequestObject();
             var url = 'https://formspree.io/awaisraad@outlook.com?name=this+is+a+message';
             req.open('POST', url , true);
+            req.setRequestHeader('Access-Control-Allow-Origin', '*');
             req.send(null);
         }
 
