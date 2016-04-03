@@ -38,23 +38,6 @@
             }
         }
 
-        function getXmlHttpRequestObject() {
-            if (window.XMLHttpRequest) {
-                return new XMLHttpRequest(); //Not IE
-            } else if(window.ActiveXObject) {
-                return new ActiveXObject("Microsoft.XMLHTTP"); //IE
-            } else {
-                alert("Your browser doesn't support the XmlHttpRequest object.  Better upgrade to Firefox.");
-            }
-        }
-
-        function sendData(){
-            var req = getXmlHttpRequestObject();
-            var url = 'https://formspree.io/awaisraad@outlook.com?name=this+is+a+message';
-            req.open('POST', url , true);
-            req.send(null);
-        }
-
     </script>
 </head>
 <body>
@@ -120,11 +103,6 @@
     <p class="text-center">
         <button class="btn btn-toolbar btn-lg" onclick="window.location.reload()">Retake</button>
     </p>
-
-    <p class="text-center">
-        <button onclick="sendData()">Submit</button>
-    </p>
-
 </div>
 
 
