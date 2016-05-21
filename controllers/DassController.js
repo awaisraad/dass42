@@ -9,12 +9,14 @@ app.controller('DassQuestionsControllers', function($scope, DassQuestions){
 
     $scope.setQuestion = function(id){
         if(id == null || id < 0){
-            id = 1;
+            id = 0;
         }
-        else if(id >= $scope.questions.length-1){
-            id = 43;
+        else if(id > $scope.questions.length -1){
+            id = 41;
             $scope.shouldCalculate = true;
             $scope.count = 'DONE';
+            $scope.selectedQuestion = "The END";
+            return;
         }
         $scope.selectedQuestion = $scope.questions[id].question;
     };
@@ -22,11 +24,11 @@ app.controller('DassQuestionsControllers', function($scope, DassQuestions){
     $scope.nextQuestion = function(answer){
         if($scope.ratings.length < 42){
             $scope.ratings.push(answer);
-            $scope.setQuestion(++$scope.count);
+            $scope.setQuestion($scope.count++);
         }
     };
 
-    $scope.depression = function(){
+    $scope.depression = function(value){
         /* 3 5 10 13 16 17 21 24 26 31 34 37 38 42 42 */
         var list = [3,5,10,13,16,17,21,24,26,31,34,37,38,42,42];
 
@@ -37,23 +39,23 @@ app.controller('DassQuestionsControllers', function($scope, DassQuestions){
         }
 
         if(sum>=0 && sum<=9){
-            return $scope.getResponse(0);
+            return (value == null) ? $scope.getResponse(0): 'Normal';
         }
         else if(sum>=10 && sum<=13){
-            return $scope.getResponse(1);
+            return (value == null) ? $scope.getResponse(1): 'Mild';
         }
         else if(sum>=14 && sum<=20){
-            return $scope.getResponse(2);
+            return (value == null) ? $scope.getResponse(2): 'Moderate';
         }
         else if(sum>=21 && sum<=27){
-            return $scope.getResponse(3);
+            return (value == null) ? $scope.getResponse(3): 'Severe';
         }
         else if(sum>=28){
-            return $scope.getResponse(4);
+            return (value == null) ? $scope.getResponse(4): 'Extremely Severe';
         }
     };
 
-    $scope.anxiety = function(){
+    $scope.anxiety = function(value){
 
         var list = [2, 4, 7, 9, 15, 19, 20, 23, 25, 28, 30, 36, 40, 41];
 
@@ -65,46 +67,44 @@ app.controller('DassQuestionsControllers', function($scope, DassQuestions){
         }
 
         if(sum>=0 && sum<=7){
-            return $scope.getResponse(0);
+            return (value == null) ? $scope.getResponse(0): 'Normal';
         }
         else if(sum>=8 && sum<=9){
-            return $scope.getResponse(1);
+            return (value == null) ? $scope.getResponse(1): 'Mild';
         }
         else if(sum>=10 && sum<=14){
-            return $scope.getResponse(2);
+            return (value == null) ? $scope.getResponse(2): 'Moderate';
         }
         else if(sum>=15 && sum<=19){
-            return $scope.getResponse(3);
+            return (value == null) ? $scope.getResponse(3): 'Severe';
         }
         else if(sum>=20){
-            return $scope.getResponse(4);
+            return (value == null) ? $scope.getResponse(4): 'Extremely Severe';
         }
     };
 
-    $scope.stress = function(){
+    $scope.stress = function(value){
         var sum = 0;
-
         var list = [1, 6, 8, 11, 12, 14, 18, 22, 27, 29, 32, 33, 35, 39];
-
         if($scope.shouldCalculate){
             sum = $scope.getSum(list);
             console.log("stress: " + sum);
         }
 
         if(sum>=0 && sum<=14){
-            return $scope.getResponse(0);
+            return (value == null) ? $scope.getResponse(0): 'Normal';
         }
         else if(sum>=15 && sum<=18){
-            return $scope.getResponse(1);
+            return (value == null) ? $scope.getResponse(1): 'Mild';
         }
         else if(sum>=19 && sum<=25){
-            return $scope.getResponse(2);
+            return (value == null) ? $scope.getResponse(2): 'Moderate';
         }
         else if(sum>=26 && sum<=33){
-            return $scope.getResponse(3);
+            return (value == null) ? $scope.getResponse(3): 'Severe';
         }
         else if(sum>=34){
-            return $scope.getResponse(4);
+            return (value == null) ? $scope.getResponse(4): 'Extremely Severe';
         }
     };
 

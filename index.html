@@ -3,60 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>DASS 42 Test</title>
-    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
     <link rel="stylesheet" href="components/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="components/css/font-awesome.css" type="text/css">
     <style>
-        .btn.btn-default{
+        .btn.btn-default {
             margin-left: 5px;
             outline: none;
+        }
+        .container.bg-image img{
+            width: 100%;
         }
         .btn.btn-default,
         .btn:active,
         .btn:focus {
             background-color: inherit;
         }
-        #hideMe{
+        #hideMe {
             margin-top: 10%;
         }
-        blockquote{
+        blockquote {
             min-height: 125px;
         }
     </style>
     <script>
         var answerCount = 1;
         var currentProgress = 3;
-        function updateProgressBar(){
-            if(answerCount == 42){
+        function updateProgressBar() {
+            if (answerCount == 42) {
                 document.getElementById("progressbar").className = "progress-bar progress-bar-success";
                 document.getElementById("result").hidden = false;
             }
             else {
                 answerCount++;
-                currentProgress += (1/42*100);
-                document.getElementById("progressbar").style.width = (currentProgress)+'%';
+                currentProgress += (1 / 42 * 100);
+                document.getElementById("progressbar").style.width = (currentProgress) + '%';
             }
         }
-
-        function getXmlHttpRequestObject() {
-            if (window.XMLHttpRequest) {
-                return new XMLHttpRequest(); //Not IE
-            } else if(window.ActiveXObject) {
-                return new ActiveXObject("Microsoft.XMLHTTP"); //IE
-            } else {
-                alert("Your browser doesn't support the XmlHttpRequest object.  Better upgrade to Firefox.");
-            }
-        }
-
-        function sendData(){
-            var req = getXmlHttpRequestObject();
-            var url = 'https://formspree.io/awaisraad@outlook.com?name=this+is+a+message';
-            req.open('POST', url , true);
-            req.send(null);
-        }
-
     </script>
 </head>
+
 <body>
 <div class="navbar navbar-default">
     <div class="navbar-inner">
@@ -94,6 +79,7 @@
 
     <div class="row" id="result" hidden="hidden">
         <h1 class="text-center text-success">Result</h1>
+
         <div class="col-md-6 col-md-offset-3">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table-striped">
@@ -116,17 +102,19 @@
                 <br/>
             </div>
         </div>
+
     </div>
     <p class="text-center">
         <button class="btn btn-toolbar btn-lg" onclick="window.location.reload()">Retake</button>
     </p>
 
-    <p class="text-center">
-        <button onclick="sendData()">Submit</button>
-    </p>
-
 </div>
 
+<!-- bg image -->
+<hr/>
+<div class="container bg-image text-center">
+    <img src="typings/logo.png" alt="Katherine Jewett"/>
+</div>
 
 <script src="components/angular.min.js"></script>
 <script src="components/angular-sanitize.js"></script>
