@@ -7,52 +7,40 @@
     <link rel="stylesheet" href="components/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="components/css/font-awesome.css" type="text/css">
     <style>
-        .btn.btn-default{
+        .btn.btn-default {
             margin-left: 5px;
             outline: none;
         }
+
         .btn.btn-default,
         .btn:active,
         .btn:focus {
             background-color: inherit;
         }
-        #hideMe{
+
+        #hideMe {
             margin-top: 10%;
         }
-        blockquote{
+        body{
+            max-height: 150%;
+        }
+        blockquote {
             min-height: 125px;
         }
     </style>
     <script>
         var answerCount = 1;
         var currentProgress = 3;
-        function updateProgressBar(){
-            if(answerCount == 42){
+        function updateProgressBar() {
+            if (answerCount == 42) {
                 document.getElementById("progressbar").className = "progress-bar progress-bar-success";
                 document.getElementById("result").hidden = false;
             }
             else {
                 answerCount++;
-                currentProgress += (1/42*100);
-                document.getElementById("progressbar").style.width = (currentProgress)+'%';
+                currentProgress += (1 / 42 * 100);
+                document.getElementById("progressbar").style.width = (currentProgress) + '%';
             }
-        }
-
-        function getXmlHttpRequestObject() {
-            if (window.XMLHttpRequest) {
-                return new XMLHttpRequest(); //Not IE
-            } else if(window.ActiveXObject) {
-                return new ActiveXObject("Microsoft.XMLHTTP"); //IE
-            } else {
-                alert("Your browser doesn't support the XmlHttpRequest object.  Better upgrade to Firefox.");
-            }
-        }
-
-        function sendData(){
-            var req = getXmlHttpRequestObject();
-            var url = 'https://formspree.io/awaisraad@outlook.com?name=this+is+a+message';
-            req.open('POST', url , true);
-            req.send(null);
         }
 
     </script>
@@ -61,7 +49,7 @@
 <div class="navbar navbar-default">
     <div class="navbar-inner">
         <ul class="nav navbar-brand">
-            <a href="#">DASS 42</a>
+            <a href="#">The DASS-42</a>
         </ul>
     </div>
 </div>
@@ -88,12 +76,21 @@
                 <button class="btn btn-default" onclick="updateProgressBar()" ng-click="nextQuestion(2)">2</button>
                 <button class="btn btn-default" onclick="updateProgressBar()" ng-click="nextQuestion(3)">3</button>
             </p>
-            <hr/>
+
+            <p class="text-center">
+                <div class="col-md-3"><strong>0 </strong>Never</div>
+                <div class="col-md-3"><strong>1 </strong>Sometimes</div>
+                <div class="col-md-3"><strong>2 </strong>Often</div>
+                <div class="col-md-3"><strong>3 </strong>Always</div>
+            </p>
+
+
         </div>
     </div>
 
     <div class="row" id="result" hidden="hidden">
         <h1 class="text-center text-success">Result</h1>
+
         <div class="col-md-6 col-md-offset-3">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table-striped">
@@ -115,16 +112,18 @@
 
                 <br/>
             </div>
+            <p class="text-center">
+                <button class="btn btn-toolbar btn-lg" onclick="window.location.reload()">Retake</button>
+            </p>
         </div>
+
     </div>
-    <p class="text-center">
-        <button class="btn btn-toolbar btn-lg" onclick="window.location.reload()">Retake</button>
-    </p>
 
-    <p class="text-center">
-        <button onclick="sendData()">Submit</button>
-    </p>
-
+</div>
+<!-- bg image -->
+<hr/>
+<div class="container bg-image text-center">
+    <img src="typings/logo.png" style="max-width:100%;" alt="Katherine Jewett"/>
 </div>
 
 
